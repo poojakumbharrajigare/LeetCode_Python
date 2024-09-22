@@ -1,5 +1,3 @@
-# LeetCode_Python
-LeetCode Problems and Solutions in Python
-
-Work in progress.
-Doing daily commits.
+# LeetCode Problems and Solutions in Python
+**Total 80 problems solved till now.** 
+Work in progress. 
