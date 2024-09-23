@@ -2,48 +2,29 @@
 Given a string s, return the longest palindromic substring in s.
 '''
 
-class Solution {
-    public String longestPalindrome(String s) {
-        int maxLength = 0;
-        String maxLengthStr = "";
+class Solution:
+    def longestPalindrome(self, s: str) -> str:
+        maxLength = 0
+        maxLengthStr = ""
+        
+        if len(s) == 1:
+            return s
 
-        if (s.length() == 1) 
-        {
-            return s;
-        }
+        for i in range(len(s)):
+            L, R = i, i
+            while L >= 0 and R < len(s) and s[L] == s[R]:
+                if R - L + 1 > maxLength:
+                    maxLength = R - L + 1
+                    maxLengthStr = s[L:R+1]
+                L -= 1
+                R += 1
 
-        for (int i = 0; i < s.length(); i++) 
-        {
-            // Odd length palindrome
-            int L = i, R = i;
-            while (L >= 0 && R < s.length() && s.charAt(L) == s.charAt(R)) 
-            {
-                if (R - L + 1 > maxLength) 
-                {
-                    maxLength = R - L + 1;
-                    maxLengthStr = s.substring(L, R + 1); 
-                }
+            L, R = i, i + 1
+            while L >= 0 and R < len(s) and s[L] == s[R]:
+                if R - L + 1 > maxLength:
+                    maxLength = R - L + 1
+                    maxLengthStr = s[L:R+1]
+                L -= 1
+                R += 1
 
-                L--;
-                R++;
-            }
-
-            // Even length palindrome
-            L = i; 
-            R = i + 1;
-            while (L >= 0 && R < s.length() && s.charAt(L) == s.charAt(R)) 
-            {
-                if (R - L + 1 > maxLength) 
-                {
-                    maxLength = R - L + 1;
-                    maxLengthStr = s.substring(L, R + 1);
-                }
-                
-                L--;
-                R++;
-            }
-        }
-
-        return maxLengthStr;
-    }
-}
+        return maxLengthStr
